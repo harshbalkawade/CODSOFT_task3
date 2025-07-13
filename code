@@ -1,0 +1,51 @@
+import java.util.*;
+
+public class MovieRecommender {
+
+    static class Movie {
+        String title;
+        String genre;
+
+        Movie(String title, String genre) {
+            this.title = title;
+            this.genre = genre;
+        }
+    }
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        // List of Movies
+        List<Movie> movies = new ArrayList<>();
+        movies.add(new Movie("Inception", "Sci-Fi"));
+        movies.add(new Movie("Interstellar", "Sci-Fi"));
+        movies.add(new Movie("The Conjuring", "Horror"));
+        movies.add(new Movie("The Notebook", "Romance"));
+        movies.add(new Movie("Dangal", "Sports"));
+        movies.add(new Movie("Chhichhore", "Comedy"));
+        movies.add(new Movie("Drishyam", "Thriller"));
+        movies.add(new Movie("3 Idiots", "Comedy"));
+        movies.add(new Movie("PK", "Sci-Fi"));
+        movies.add(new Movie("Toilet: Ek Prem Katha", "Drama"));
+
+        // Ask for user preference
+        System.out.println("What type of movie do you like? (e.g. Sci-Fi, Horror, Comedy, Romance, Thriller, Drama, Sports)");
+        String preferredGenre = sc.nextLine().trim();
+
+        // Show recommendations
+        System.out.println("\nRecommended " + preferredGenre + " movies:");
+        boolean found = false;
+        for (Movie movie : movies) {
+            if (movie.genre.equalsIgnoreCase(preferredGenre)) {
+                System.out.println("- " + movie.title);
+                found = true;
+            }
+        }
+
+        if (!found) {
+            System.out.println("Sorry, no movies found in that genre.");
+        }
+
+        sc.close();
+    }
+}
